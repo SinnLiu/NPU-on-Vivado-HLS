@@ -42,7 +42,6 @@ module PE(
     else if(ctrl[1])
     begin
       vid_o <= 1'h1;
-      result <= psum_d;
     end
     else
     begin
@@ -50,4 +49,5 @@ module PE(
     end
   end
 
+  assign result = psum_r;
 endmodule

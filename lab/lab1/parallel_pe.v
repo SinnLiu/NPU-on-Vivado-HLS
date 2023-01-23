@@ -25,6 +25,7 @@ module parallel_pe(
     );
 
   wire [ 31 : 0 ] acc_result;
+  // TODO: add tree
   
   reg [ 31 : 0 ] psum_r;
 
@@ -53,7 +54,6 @@ module parallel_pe(
     else if(ctrl[1])
     begin
       vid_o <= 1'h1;
-      result <= psum_d;
     end
     else
     begin
@@ -61,4 +61,5 @@ module parallel_pe(
     end
   end
 
+  assign result = psum_r;
 endmodule
