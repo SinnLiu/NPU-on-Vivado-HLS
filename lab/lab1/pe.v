@@ -18,7 +18,7 @@ module PE(
   reg [31:0] psum_r;
 
   /* adder */
-  wire [31:0] psum_d = mult_res + psum_r;
+  wire [31:0] psum_d = ctrl[0] ? mult_res : mult_res + psum_r;
 
   /* partial sum reg */
   always@(posedge clk or negedge rst_n)
@@ -39,9 +39,10 @@ module PE(
     begin
       vid_o <= 1'h0;
     end
-    else if(vld_i)
+    else if(ctrl[1])
     begin
       vid_o <= 1'h1;
+      result <= psum_d;
     end
     else
     begin
@@ -49,6 +50,4 @@ module PE(
     end
   end
 
-  /* output */
-  assign result = psum_r;
 endmodule
