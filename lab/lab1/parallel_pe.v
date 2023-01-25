@@ -26,7 +26,12 @@ module parallel_pe(
 
   wire [ 31 : 0 ] acc_result;
   // TODO: add tree
-  
+  pe_acc
+    pe_acc_dut (
+      .mult_result (mult_result ),
+      .acc_result  ( acc_result)
+    );
+
   reg [ 31 : 0 ] psum_r;
 
   /* adder */
